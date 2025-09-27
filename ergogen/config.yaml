@@ -170,6 +170,36 @@ outlines:
           shift: [-.6cx, -.7cy]
         - ref: matrix_outer_bottom
           shift: [0, -.7cy]
+          
+  pcb_outline_left_xl:
+    - what: polygon
+      points:
+        - ref: matrix_outer_bottom
+          shift: [-.7cx-2, -.7cy-2]
+        - ref: matrix_outer_top
+          shift: [-.7cx-2, .7cy+2]
+        - ref: matrix_middle_top
+          shift: [-.4cx-2, .7cy+2]
+        - ref: matrix_middle_top
+          shift: [.4cx+2, .7cy+2]
+        - ref: matrix_inner_top
+          shift: [.6cx+2, .7cy+2]
+        - ref: matrix_inner_top
+          shift: [42, .7cy+2]
+        - ref: matrix_inner_bottom
+          shift: [42, -.2cy-2]
+        - ref: thumbfan_far_thumb
+          shift: [.7cx+2, .6cy+2]
+        - ref: thumbfan_far_thumb
+          shift: [.7cx+2, -.7cy-2]
+        - ref: thumbfan_home_thumb
+          shift: [.3cx+2, -.7cy-2]
+        - ref: thumbfan_near_thumb
+          shift: [.4cx+2, -.7cy-2]
+        - ref: thumbfan_near_thumb
+          shift: [-.5cx-2, -.7cy-2]
+        - ref: matrix_outer_bottom
+          shift: [0, -.7cy-2]
 
   pcb_outline_right:
     - what: polygon
@@ -201,6 +231,36 @@ outlines:
         - ref: mirror_matrix_outer_bottom
           shift: [0, -.7cy]
           
+  pcb_outline_right_xl:
+    - what: polygon
+      points:
+        - ref: mirror_matrix_outer_bottom
+          shift: [-.7cx-2, -.7cy-2]
+        - ref: mirror_matrix_outer_top
+          shift: [-.7cx-2, .7cy+2]
+        - ref: mirror_matrix_middle_top
+          shift: [-.4cx-2, .7cy+2]
+        - ref: mirror_matrix_middle_top
+          shift: [.4cx+2, .7cy+2]
+        - ref: mirror_matrix_inner_top
+          shift: [.6cx+2, .7cy+2]
+        - ref: mirror_matrix_inner_top
+          shift: [42, .7cy+2]
+        - ref: mirror_matrix_inner_bottom
+          shift: [42, -.2cy-2]
+        - ref: mirror_thumbfan_far_thumb
+          shift: [.7cx+2, .6cy+2]
+        - ref: mirror_thumbfan_far_thumb
+          shift: [.7cx+2, -.7cy-2]
+        - ref: mirror_thumbfan_home_thumb
+          shift: [.3cx+2, -.7cy-2]
+        - ref: mirror_thumbfan_near_thumb
+          shift: [.4cx+2, -.7cy-2]
+        - ref: mirror_thumbfan_near_thumb
+          shift: [-.5cx-2, -.7cy-2]
+        - ref: mirror_matrix_outer_bottom
+          shift: [0, -.7cy-2]
+          
   combined_plate_outline:
     frame:
       name: plate_outline_left
@@ -230,6 +290,22 @@ outlines:
       name: combined_plate_outline
     keyholes:
       name: key_sockets_combined
+      operation: subtract
+      fillet: 2
+      
+  left_outer_wall:
+    frame: 
+      name: pcb_outline_left_xl
+    void:
+      name: pcb_outline_left
+      operation: subtract
+      fillet: 2
+
+  right_outer_wall:
+    frame:
+      name: pcb_outline_right_xl
+    void:
+      name: pcb_outline_right
       operation: subtract
       fillet: 2
 
@@ -423,3 +499,18 @@ cases:
   both_switch_plate_sockets:
     - name: combined_switch_plate
       extrude: 1.2
+      
+  left_case_wall:
+    - name: left_outer_wall
+      extrude: 12
+  left_case_bottom:
+    - name: pcb_outline_left
+      extrude: 2
+      
+  left_case:
+    - what: case
+      name: left_case_wall
+      operation: add
+    - what: case
+      name: left_case_bottom
+      operation: add
