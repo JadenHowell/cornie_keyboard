@@ -1,0 +1,425 @@
+meta:
+  engine: 4.1.0
+
+units:
+  chocSocketX: 14
+  chocSocketY: 14
+
+points:
+  zones:
+    matrix:
+      anchor:
+        shift: [100, -100]
+        rotate: 0
+      columns:
+        outer:
+          key:
+            column_net: P4
+        pinky:
+          key:
+            column_net: P5
+        ring:
+          key:
+            stagger: 5
+            column_net: P6
+        middle:
+          key:
+            stagger: 5
+            column_net: P7
+        index:
+          key:
+            stagger: -5
+            column_net: P8
+        inner:
+          key:
+            column_net: P9
+      rows:
+        bottom:
+          row_net: P16
+        home:
+          row_net: P10
+        top:
+          row_net: P2
+
+    thumbfan:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [-30, -20]
+      columns:
+        near:
+          key:
+            column_net: P7
+        home:
+          key:
+            spread: 20
+            splay: -20
+            origin: [-10, -8]
+            column_net: P8
+        far:
+          key:
+            spread: 20
+            splay: -20
+            origin: [-9, -8]
+            column_net: P9
+      rows:
+        thumb:
+          row_net: P3
+
+  mirror:
+    ref: matrix_inner_top
+    distance: 80
+
+outlines:
+  key_sockets_left:
+    - what: rectangle
+      where: /^(?:matrix_|thumbfan_).*/
+      size: [chocSocketX, chocSocketY]
+
+  key_sockets_right:
+    - what: rectangle
+      where: /^(?:mirror_matrix_|mirror_thumbfan_).*/
+      size: [chocSocketX, chocSocketY]
+
+  key_sockets_combined:
+    - what: rectangle
+      where: /^(?:matrix_|thumbfan_|mirror_matrix_|mirror_thumbfan_).*/
+      size: [chocSocketX, chocSocketY]
+
+  plate_outline_left:
+    - what: polygon
+      points:
+        - ref: matrix_outer_bottom
+          shift: [-.7cx, -.7cy]
+        - ref: matrix_outer_top
+          shift: [-.7cx, .7cy]
+        - ref: matrix_middle_top
+          shift: [-.5cx, .7cy]
+        - ref: matrix_middle_top
+          shift: [.5cx, .7cy]
+        - ref: matrix_inner_top
+          shift: [.7cx, .7cy]
+        - ref: matrix_inner_bottom
+          shift: [.7cx, -.3cy]
+        - ref: thumbfan_far_thumb
+          shift: [.7cx, .7cy]
+        - ref: thumbfan_far_thumb
+          shift: [.7cx, -.7cy]
+        - ref: thumbfan_home_thumb
+          shift: [.4cx, -.7cy]
+        - ref: thumbfan_near_thumb
+          shift: [.5cx, -.7cy]
+        - ref: thumbfan_near_thumb
+          shift: [-.6cx, -.7cy]
+        - ref: matrix_outer_bottom
+          shift: [0, -.7cy]
+          
+  plate_outline_right:
+    - what: polygon
+      points:
+        - ref: mirror_matrix_outer_bottom
+          shift: [-.7cx, -.7cy]
+        - ref: mirror_matrix_outer_top
+          shift: [-.7cx, .7cy]
+        - ref: mirror_matrix_middle_top
+          shift: [-.5cx, .7cy]
+        - ref: mirror_matrix_middle_top
+          shift: [.5cx, .7cy]
+        - ref: mirror_matrix_inner_top
+          shift: [.7cx, .7cy]
+        - ref: mirror_matrix_inner_bottom
+          shift: [.7cx, -.3cy]
+        - ref: mirror_thumbfan_far_thumb
+          shift: [.7cx, .7cy]
+        - ref: mirror_thumbfan_far_thumb
+          shift: [.7cx, -.7cy]
+        - ref: mirror_thumbfan_home_thumb
+          shift: [.4cx, -.7cy]
+        - ref: mirror_thumbfan_near_thumb
+          shift: [.5cx, -.7cy]
+        - ref: mirror_thumbfan_near_thumb
+          shift: [-.6cx, -.7cy]
+        - ref: mirror_matrix_outer_bottom
+          shift: [0, -.7cy]
+
+  pcb_outline_left:
+    - what: polygon
+      points:
+        - ref: matrix_outer_bottom
+          shift: [-.7cx, -.7cy]
+        - ref: matrix_outer_top
+          shift: [-.7cx, .7cy]
+        - ref: matrix_middle_top
+          shift: [-.5cx, .7cy]
+        - ref: matrix_middle_top
+          shift: [.5cx, .7cy]
+        - ref: matrix_inner_top
+          shift: [.7cx, .7cy]
+        - ref: matrix_inner_top
+          shift: [40, .7cy]
+        - ref: matrix_inner_bottom
+          shift: [40, -.3cy]
+        - ref: thumbfan_far_thumb
+          shift: [.7cx, .7cy]
+        - ref: thumbfan_far_thumb
+          shift: [.7cx, -.7cy]
+        - ref: thumbfan_home_thumb
+          shift: [.4cx, -.7cy]
+        - ref: thumbfan_near_thumb
+          shift: [.5cx, -.7cy]
+        - ref: thumbfan_near_thumb
+          shift: [-.6cx, -.7cy]
+        - ref: matrix_outer_bottom
+          shift: [0, -.7cy]
+
+  pcb_outline_right:
+    - what: polygon
+      points:
+        - ref: mirror_matrix_outer_bottom
+          shift: [-.7cx, -.7cy]
+        - ref: mirror_matrix_outer_top
+          shift: [-.7cx, .7cy]
+        - ref: mirror_matrix_middle_top
+          shift: [-.5cx, .7cy]
+        - ref: mirror_matrix_middle_top
+          shift: [.5cx, .7cy]
+        - ref: mirror_matrix_inner_top
+          shift: [.7cx, .7cy]
+        - ref: mirror_matrix_inner_top
+          shift: [40, .7cy]
+        - ref: mirror_matrix_inner_bottom
+          shift: [40, -.3cy]
+        - ref: mirror_thumbfan_far_thumb
+          shift: [.7cx, .7cy]
+        - ref: mirror_thumbfan_far_thumb
+          shift: [.7cx, -.7cy]
+        - ref: mirror_thumbfan_home_thumb
+          shift: [.4cx, -.7cy]
+        - ref: mirror_thumbfan_near_thumb
+          shift: [.5cx, -.7cy]
+        - ref: mirror_thumbfan_near_thumb
+          shift: [-.6cx, -.7cy]
+        - ref: mirror_matrix_outer_bottom
+          shift: [0, -.7cy]
+          
+  combined_plate_outline:
+    frame:
+      name: plate_outline_left
+    otherFrame:
+      name: plate_outline_right
+      operation: add
+      fillet: 2
+
+  left_switch_plate:
+    frame:
+      name: plate_outline_left
+    keyholes:
+      name: key_sockets_left
+      operation: subtract
+      fillet: 2
+  
+  right_switch_plate:
+    frame:
+      name: plate_outline_right
+    keyholes:
+      name: key_sockets_right
+      operation: subtract
+      fillet: 2
+      
+  combined_switch_plate:
+    frame:
+      name: combined_plate_outline
+    keyholes:
+      name: key_sockets_combined
+      operation: subtract
+      fillet: 2
+
+  #unused, just leaving here for visibility in the viewer
+  switch_plate_w_controller:
+    frame:
+      name: pcb_outline_left
+    keyholes:
+      name: key_sockets_combined
+      operation: subtract
+      fillet: 2
+
+pcbs:
+  left_pcb:
+    outlines:
+      main:
+        outline: pcb_outline_left
+    footprints:
+      choc_hotswap:
+        what: choc
+        where: /^(?:matrix_|thumbfan_).*/ #only target keys that dont start with mirror_ so only left side
+        params:
+          keycaps: true
+          reverse: false
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      diode:
+        what: diode
+        where: /^(?:matrix_|thumbfan_).*/ #only target keys that dont start with mirror_ so only left side
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0,-5]
+      promicro:
+        what: promicro
+        params:
+          orientation: "down"
+        where:
+          ref: matrix_inner_top
+          shift: [25,-8]
+          rotate: -90
+      jstph: #battery jack
+        what: jstph
+        where:
+          ref: matrix_inner_top
+          shift: [10, -5] #todo: change this
+          rotate: 0
+        params:
+            side: B
+            pos: pos
+            neg: GND
+      battery_switch: # Battery on/off switch
+        what: slider
+        where:
+            ref: matrix_middle_top
+            shift: [5.5, 9.8]
+        params:
+            side: B
+            from: pos
+            to: RAW
+      horizontal_reset: # Reset switch
+        what: EVQPUC
+        where:
+            ref: matrix_middle_top
+            shift: [-5.5, 10]
+        params:
+          side: B
+          from: GND
+          to: RST
+      hole_top_left:
+        what: mountinghole
+        where:
+          ref: [matrix_outer_top]
+          shift: [.53cx, -.3cy]
+      hole_bottom_left:
+        what: mountinghole
+        where:
+          ref: [matrix_outer_bottom]
+          shift: [.53cx, -.3cy]
+      hole_top_right:
+        what: mountinghole
+        where:
+          ref: [matrix_inner_top]
+          shift: [-.53cx, -.3cy]
+      hole_bottom_right:
+        what: mountinghole
+        where:
+          ref: [matrix_inner_bottom]
+          shift: [-.53cx, -.3cy]
+      hole_thumbfan:
+        what: mountinghole
+        where:
+          ref: [thumbfan_home_thumb]
+          shift: [.62cx, 0]
+
+  right_pcb:
+    outlines:
+      main:
+        outline: pcb_outline_right
+    footprints:
+      choc_hotswap:
+        what: choc
+        where: /^(?:mirror_matrix_|mirror_thumbfan_).*/
+        params:
+          keycaps: true
+          reverse: false
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      diode:
+        what: diode
+        where: /^(?:mirror_matrix_|mirror_thumbfan_).*/
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0,-5]
+      promicro:
+        what: promicro
+        params:
+          orientation: "down"
+        where:
+          ref: mirror_matrix_inner_top
+          shift: [25,-8]
+          rotate: 90
+      jstph: #battery jack
+        what: jstph
+        where:
+          ref: mirror_matrix_inner_top
+          shift: [10, -5] #todo: change this
+          rotate: 0
+        params:
+            side: B
+            pos: pos
+            neg: GND
+      battery_switch: # Battery on/off switch
+        what: slider
+        where:
+            ref: mirror_matrix_middle_top
+            shift: [-5.5, 9.8]
+        params:
+            side: B
+            from: pos
+            to: RAW
+      horizontal_reset: # Reset switch (horizontal community version)
+        what: EVQPUC
+        where:
+            ref: mirror_matrix_middle_top
+            shift: [5.5, 10]
+        params:
+          side: B
+          from: GND
+          to: RST
+      hole_top_left:
+        what: mountinghole
+        where:
+          ref: [mirror_matrix_outer_top]
+          shift: [.53cx, -.3cy]
+      hole_bottom_left:
+        what: mountinghole
+        where:
+          ref: [mirror_matrix_outer_bottom]
+          shift: [.53cx, -.3cy]
+      hole_top_right:
+        what: mountinghole
+        where:
+          ref: [mirror_matrix_inner_top]
+          shift: [-.53cx, -.3cy]
+      hole_bottom_right:
+        what: mountinghole
+        where:
+          ref: [mirror_matrix_inner_bottom]
+          shift: [-.53cx, -.3cy]
+      hole_thumbfan:
+        what: mountinghole
+        where:
+          ref: [mirror_thumbfan_home_thumb]
+          shift: [.62cx, 0]
+
+cases:
+  left_switch_plate_sockets:
+    - name: left_switch_plate
+      extrude: 1.2
+  
+  right_switch_plate_sockets:
+    - name: right_switch_plate
+      extrude: 1.2
+      
+  both_switch_plate_sockets:
+    - name: combined_switch_plate
+      extrude: 1.2
